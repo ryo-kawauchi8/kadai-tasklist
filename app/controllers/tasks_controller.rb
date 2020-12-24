@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+before_action :set_task, only: [:show, :edit, :update, :destroy]  
   def index
     @tasks = Task.all
   end
@@ -41,6 +42,7 @@ class TasksController < ApplicationController
     redirect_to tasks_url
   end
 
+  private
   
   def task_params
     params.require(:task).permit(:content, :status)
